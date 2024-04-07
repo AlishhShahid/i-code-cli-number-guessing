@@ -1,18 +1,19 @@
 #! /usr/bin/env node
-import inquirer from "inquirer"
+import inquirer from "inquirer";
 
 const randomNumber = Math.floor(Math.random() * 6 + 1);
 
 const answers = await inquirer.prompt([
-    {
-        name: "userGuessedNumber",
-        type: "number",
-        message: "please guess a number between 1-6:",
-    }
+  {
+    name: "userGuessedNumber",
+    type: "number",
+    message: "please guess a number between 1-6:",
+  },
 ]);
-
-if(answers.userGuessedNumber == randomNumber){
-    console.log("Congratulations! You guessed right number");
+if (answers.userGuessedNumber < 1 || answers.userGuessedNumber > 6) {
+  console.log("This number is not included!!!");
+} else if (answers.userGuessedNumber == randomNumber) {
+  console.log("Congratulations! You guessed right number");
 } else {
-    console.log("You guessed wrong answer");
+  console.log("You guessed wrong answer!!!");
 }
